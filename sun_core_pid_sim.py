@@ -17,7 +17,7 @@ class SunCorePID:
         correction = self.kp * error + self.ki * self.integral + self.kd * derivative
         self.prev_error = error
         
-        new_stability = min(max(current_stability + correction, 0.0), 1.0)
+        new_stability = min(max(current_stability + correction * 0.1, 0.0), 1.0)
         self.history.append(new_stability)
         return new_stability
 
